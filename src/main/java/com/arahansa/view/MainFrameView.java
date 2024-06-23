@@ -6,13 +6,17 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.arahansa.controller.PCServerBackground;
+
 public class MainFrameView extends JFrame {
 
     private JPanel[] panel = new JPanel[2];
 
     public static void main(String[] args) {
         MainFrameView mainView = new MainFrameView();
-
+        PCServerBackground pcServer = new PCServerBackground();
+        pcServer.setGui(mainView);
+        pcServer.setting();
     }
 
     public MainFrameView() {
