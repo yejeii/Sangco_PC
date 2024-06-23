@@ -1,14 +1,14 @@
+drop table if exists member_test;
 CREATE TABLE member_test (
-    num int(11),
-    id int(11) ,
-    pw varchar(200) ,
-    age int(11) ,
-    mileage int(11) ,
+    num int auto_increment,
+    id varchar(20) ,
+    pw varchar(20) ,
+    age int ,
     phone varchar(20) ,
-    constraint m_num_pk PRIMARY KEY (num)
+    constraint m_id_pk PRIMARY KEY (id)
 );
 
-insert into member_test 
-values (1, 'ulla', 'ulla203', 14, 13, '010-2873-8811');
+insert into member_test (id, pw, age, phone)
+values ('ulla', 'ulla203', 14, '010-2873-8811');
 
 select * from member_test;

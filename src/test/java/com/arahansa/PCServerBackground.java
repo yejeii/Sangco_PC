@@ -1,16 +1,14 @@
-package com.arahansa.controller;
+package com.arahansa;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import com.arahansa.view.MainFrameView;
-
 public class PCServerBackground {
 
     private ServerSocket serverSocket;
     private Socket socket;
-    private MainFrameView gui;
+    private MainFrameViewTest gui;
 
     public void setting(){
 		try {
@@ -23,7 +21,7 @@ public class PCServerBackground {
 		}
 	}
 
-    public void setGui(MainFrameView gui) {
+    public void setGui(MainFrameViewTest gui) {
         this.gui = gui;
     }
 

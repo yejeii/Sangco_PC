@@ -29,7 +29,33 @@ public class Setting {
 																				// 1600,
 																				// 900
 
+																				// Panel Location
+
+	// Panel Location
+	public static Rectangle imgClock = new Rectangle(15, 20, 179, 149);
+	public static Rectangle clockMessage = new Rectangle(80, 53, 100, 100);
+	
     // Screen x,y
 	public static int locationX = (windowSize.width - width) / 2;
 	public static int locationY = (windowSize.height - height) / 2;
+
+	// Label Location
+	public static Rectangle ampmLabel = new Rectangle(15, 20, 100, 30);
+	public static Rectangle timeLabel = new Rectangle(0, 0, 100, 20);
+
+	// ManageView 에 들어갈 것들
+	public static Rectangle layeredPane = bRectangle;
+	public static Rectangle backGround = bRectangle;
+	public static Rectangle myStarPanel = bRectangle;
+	public static Rectangle seat50 = new Rectangle(165, 109, 1368, 686);
+
+	// singleTone
+	private static Setting instance = new Setting();
+
+	public static Setting getInstance() {
+		return instance;
+	}
+
+	private Setting() {
+	}
 }

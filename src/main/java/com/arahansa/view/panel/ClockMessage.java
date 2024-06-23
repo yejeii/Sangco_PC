@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -23,14 +24,10 @@ public class ClockMessage extends JPanel implements Runnable {
         this.setLayout(null);
 
         timeLabel = new JLabel(time);
-        timeLabel.setBounds(0, 0, 100, 20);
-        timeLabel.setForeground(Setting.bColor);
-        timeLabel.setFont(Setting.bFont);
+        setLabel(timeLabel).setBounds(Setting.timeLabel);
         
         ampmLabel = new JLabel(ampm[i]);
-        ampmLabel.setBounds(15, 20, 100, 30);
-        ampmLabel.setForeground(Setting.bColor);
-        ampmLabel.setFont(Setting.bFont);
+        setLabel(ampmLabel).setBounds(Setting.ampmLabel);
 
         add(timeLabel, BorderLayout.NORTH);
         add(ampmLabel, BorderLayout.CENTER);
@@ -44,6 +41,12 @@ public class ClockMessage extends JPanel implements Runnable {
             }
             timeLabel.setText(sdf.format(new Date()));
         } while(true);
+    }
 
+    // Setting Methods
+    private JComponent setLabel(JComponent component) {
+        component.setForeground(Setting.bColor);
+        component.setFont(Setting.bFont);
+        return  component;
     }
 }

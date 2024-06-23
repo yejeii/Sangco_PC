@@ -4,7 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class MemberClientByJDBCTest {
+public class MemberClientByJDBCTest{
+
+    private static Connection con;
+    private static PreparedStatement pstmt;
+    private static ResultSet rs;
+    private static String sql;
+
     public static void main(String[] args) {
         boolean test = loginTest("ulla", "ulla202");
         System.out.println("로그인 결과 : " + test);
@@ -15,10 +21,6 @@ public class MemberClientByJDBCTest {
 
         DBConnectionMgr pool = DBConnectionMgr.getInstance();
 
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        String sql = null;
         String getPass = null;
 
         try {
