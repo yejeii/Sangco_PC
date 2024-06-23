@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
@@ -15,7 +16,15 @@ public class ClientGUI extends JFrame implements ActionListener {
     private JTextField jtf = new JTextField(25);
     private ClientBackground client = new ClientBackground();
 
+    private static String nickName;
+
     public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("당신의 닉네임을 설정하세요. ");
+        nickName = scanner.nextLine();
+        scanner.close();
+
         new ClientGUI();
     }
 
@@ -31,6 +40,7 @@ public class ClientGUI extends JFrame implements ActionListener {
         setTitle("클라이언트");
 
         client.setGui(this);
+        client.setNickname(nickName);
         client.connect();
     }
 
@@ -39,9 +49,9 @@ public class ClientGUI extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        String msg = jtf.getText()+"\n";
-        jta.append("클라이언트 : " + msg);
-        System.out.printf("msg : %s", msg);
+        String msg = nickName + " : " + jtf.getText()+"\n";
+        // jta.append("클라이언트 : " + msg);
+        System.out.printf("msg || %s", msg);
 
         // 클라 백그라운드로 msg 전송
         try {
@@ -58,6 +68,7 @@ public class ClientGUI extends JFrame implements ActionListener {
      * 서버로부터 넘어온 메시지 GUI 에 부착
      */
 	public void apppendMsg(String msg) {
+        System.out.println("날아온 메시지 || " + msg);
         jta.append(msg);
 	}
 }

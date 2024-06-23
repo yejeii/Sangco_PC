@@ -40,23 +40,19 @@ public class ServerGUI extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        String msg = jtf.getText() + "\n";
-        jta.append("서버 : " + msg);
-        System.out.printf("msg : %s", msg);
+        String msg = "관리자 : " + jtf.getText() + "\n";
+        jta.append(msg);
+        System.out.printf("msg || %s", msg);
 
         // 서버 백그라운드로 msg 전송
-        try {
-            server.sendMessage(msg);
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
+        server.sendMessage(msg);
 
         // 텍스트 필드 초기화
         jtf.setText("");
     }    
 
     public void appendMsg(String msg) {
+        System.out.println("날아온 메시지 || " + msg);
         jta.append(msg);
-        System.out.println("날아온 메시지 : " + msg);
     }
 }
