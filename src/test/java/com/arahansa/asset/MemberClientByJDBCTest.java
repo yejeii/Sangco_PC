@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.arahansa.util.DBConnectionMgr;
+
 public class MemberClientByJDBCTest{
 
     private static Connection con;

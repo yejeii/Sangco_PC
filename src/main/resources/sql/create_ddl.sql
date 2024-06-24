@@ -1,5 +1,5 @@
-drop table if exists member_test;
-CREATE TABLE member_test (
+drop table if exists MEMBER;
+CREATE TABLE MEMBER (
     num int auto_increment,
     id varchar(20) ,
     pw varchar(20) ,
@@ -8,7 +8,7 @@ CREATE TABLE member_test (
     constraint m_id_pk PRIMARY KEY (id)
 );
 
-insert into member_test (id, pw, age, phone)
+insert into MEMBER (id, pw, age, phone)
 values ('ulla', 'ulla203', 14, '010-2873-8811');
 
-select * from member_test;
+select * from MEMBER;

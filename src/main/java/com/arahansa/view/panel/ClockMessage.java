@@ -9,24 +9,29 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.arahansa.asset.Setting;
+import com.arahansa.util.Setting;
 
 // 시계글씨 클래스
-public class ClockMessage extends JPanel implements Runnable {
+public class ClockMessage extends JPanel implements Runnable, ConstraintPanel {
 
-    int i = Calendar.getInstance().get(Calendar.AM_PM);
-    String[] ampm = {"AM", "PM"};
-    SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-    String time = sdf.format(new Date());
-    JLabel timeLabel, ampmLabel;
+    private int ampmCode = Calendar.getInstance().get(Calendar.AM_PM);
+    private String[] ampmValues = {"AM", "PM"};
+    private String timeValue = new SimpleDateFormat("hh:mm:ss").format(new Date());
+    private JLabel timeLabel, ampmLabel;
 
-    public ClockMessage() {
+    private Object constrains;
+
+    public ClockMessage(Object constrains) {
+        this.constrains = constrains;
+        init();
+    }
+
+    private void init() {
         this.setLayout(null);
-
-        timeLabel = new JLabel(time);
+        timeLabel = new JLabel(timeValue);
         setLabel(timeLabel).setBounds(Setting.timeLabel);
         
-        ampmLabel = new JLabel(ampm[i]);
+        ampmLabel = new JLabel(ampmValues[ampmCode]);
         setLabel(ampmLabel).setBounds(Setting.ampmLabel);
 
         add(timeLabel, BorderLayout.NORTH);
@@ -39,7 +44,7 @@ public class ClockMessage extends JPanel implements Runnable {
                 Thread.sleep(1000); // 1초
             } catch (InterruptedException e) {
             }
-            timeLabel.setText(sdf.format(new Date()));
+            timeLabel.setText(timeValue);
         } while(true);
     }
 
@@ -48,5 +53,10 @@ public class ClockMessage extends JPanel implements Runnable {
         component.setForeground(Setting.bColor);
         component.setFont(Setting.bFont);
         return  component;
+    }
+
+    @Override
+    public Object getConstrains() {
+        return this.constrains;
     }
 }
